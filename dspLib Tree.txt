@@ -1,0 +1,82 @@
+├── OnePoleFilter
+│   ├─ Members:
+│   ├─   float mFeedbackCoef
+│   ├─   float mMemorySample
+│   ├─   float mFeedforwardCoef
+│   ├─ Methods:
+│   ├─   public: OnePoleFilter()
+│   ├─   double processAudioLP(double sampleIn)
+│   ├─   double processAudioHP(double sampleIn)
+│   ├─   void setNormalizedCutoffFrequency(float normCutoffFrequency)
+│   └─   double processAudioLowPassProtected(double sampleIn)
+│   └── DeZipper
+│       ├─ Methods:
+│       ├─   public: DeZipper()
+│       ├─   Constructor DeZipper(double amount)
+│       ├─   double processDeZipper(double sampleIn)
+│       └─   void setDeZippingAmount(double amount)
+│
+├── RingBuffer
+│   ├─ Members:
+│   ├─   int mRingBufferLength
+│   ├─ Methods:
+│   ├─   public: RingBuffer()
+│   ├─   samples RingBuffer(int length)
+│   ├─   void reset()
+│   ├─   void updateReadIndex()
+│   ├─   void updateWriteIndex()
+│   ├─   void commonConstructor()
+│   ├─   void initRingBufferPtr()
+│   └─   int updateRingBufferIdx(int index)
+│   ├── DelayLine
+│   │   ├─ Members:
+│   │   ├─   bool isModulated
+│   │   ├─   double modDepth
+│   │   ├─   int delaySamples
+│   │   ├─   dspLib::LFO mLFO
+│   │   ├─   int mDelaySamples
+│   │   ├─   bool mIsModulated
+│   │   ├─   double mModDepth
+│   │   ├─ Methods:
+│   │   ├─   public: DelayLine()
+│   │   ├─   samples DelayLine(int length)
+│   │   ├─   samples DelayLine(int length, int delaySamples)
+│   │   ├─   setting DelayLine(int length, int delaySamples, int Fs, double frequencyLFO, double modDepth)
+│   │   ├─   shape DelayLine(int length, int delaySamples, int Fs, double frequencyLFO, double modDepth, enum dspLib::waveform shape)
+│   │   ├─   void reset()
+│   │   ├─   double processAudio(double sampleIn)
+│   │   ├─   void setIsModulated(bool isModulated = false)
+│   │   ├─   void setModDepth(double modDepth = 0.0)
+│   │   ├─   void setDelaySamples(int delaySamples = 0)
+│   │   └─   void updateReadIdx()
+│   │   └── AllPass
+│   │       ├─ Members:
+│   │       ├─   double mFeedbackCoef
+│   │       ├─ Methods:
+│   │       ├─   public: AllPass()
+│   │       ├─   samples AllPass(int length)
+│   │       ├─   samples AllPass(int length, int delaySamples)
+│   │       ├─   setting AllPass(int length, int delaySamples, int Fs, double frequencyLFO, double modDepth)
+│   │       ├─   shape AllPass(int length, int delaySamples, int Fs, double frequencyLFO, double modDepth, enum dspLib::waveform shape)
+│   │       ├─   void reset()
+│   │       ├─   double processAudio(double sampleIn)
+│   │       └─   void setFeedbackCoefficient(double feedbackCoefficient)
+│   │
+│   └── LFO
+│       ├─ Members:
+│       ├─   dspLib::waveform mShape
+│       ├─ Methods:
+│       ├─   public: LFO()
+│       ├─   lfo LFO(int Fs, double frequencyLFO)
+│       ├─   void reset()
+│       ├─   double out()
+│       └─   void initWaveform()
+│
+└── Saturator
+    ├─ Members:
+    ├─   double mDriveLin
+    ├─ Methods:
+    ├─   public: Saturator()
+    ├─   double processAudioAtan(double sampleIn)
+    ├─   double processAudioTanh(double sampleIn)
+    └─   void setDrive(double drive)
